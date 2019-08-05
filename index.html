@@ -13,8 +13,8 @@
 			<div class="false-control">
 				<em class="audio-control"></em>
 				<span class="time current-time">0:00</span>
-				<span class="time">/</span>
-				<span class="time total-time">4:53</span>
+				<!--<span class="time">/</span>
+				<span class="time total-time">4:53</span>-->
 			</div>
 			<p class="title">文物名称</p>
 			<div class="lrc">
@@ -33,22 +33,11 @@
 		var num = -1;//时间计数
 		var timer = "";//定时器
 		var str = '';//当前播放时间
-		var finalTime='';//总时间 
 		timeArr=[];//文字介绍时间节点
 		baseTop=168
-		//(1)生成时间
+		//(1)生成时间（总时间）
 		var totalTime = audio.duration;
-//		console.log(totalTime)
-//		var minites = String(Math.floor(totalTime/60));
-//		var secends = String(Math.floor(totalTime%60));
-//		console.log(minites,secends)
-		if(Math.floor(totalTime%60)>=10){
-			finalTime= Math.floor(totalTime/60)+":"+Math.floor(totalTime%60)
-		}else{
-			finalTime= Math.floor(totalTime/60)+":0"+Math.floor(totalTime%60)
-		}
-		$('.total-time').html(finalTime)
-		//(2)生成文字介绍
+//		//(2)生成文字介绍
 		var strLrc = '';
 		for(var attr in lrc){
 			strLrc+='<li class="lrc-item" data-time="'+attr+'">'+lrc[attr]+'</li>';
@@ -66,7 +55,7 @@
 				audio.play()
 				timer = setInterval(function(){
 					num+=1;
-					if(num>=finalTime){
+					if(num>=totalTime){
 						num = -1;
 						$(this).removeClass('active')
 						clearInterval(timer)
