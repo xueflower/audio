@@ -51,6 +51,7 @@
 				clearInterval(timer)
 				audio.pause()
 			}else{
+				audio.load();
 				$(this).addClass('active')
 				audio.play()
 				timer = setInterval(function(){
