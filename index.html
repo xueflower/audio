@@ -9,13 +9,13 @@
 	</head>
 	<body>
 		<div class="container">
-			<audio id="audio" src="audio/moon.mp3" controls loop></audio>
-			<!--<div class="false-control">
+			<!--<audio id="audio" src="" controls loop></audio>-->
+			<div class="false-control">
 				<em class="audio-control"></em>
 				<span class="time current-time">0:00</span>
 				<span class="time">/</span>
 				<span class="time total-time">4:53</span>
-			</div>-->
+			</div>
 			<p class="title">文物名称</p>
 			<div class="lrc">
 				<ul id="lrc">
@@ -29,31 +29,32 @@
 	<script src="js/lrc.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		//歌词动态交互
-		var audio = $('#audio')[0];
+//		var audio = $('#audio')[0];
 		var num = -1;//时间计数
 		var timer = "";//定时器
 		var str = '';//当前播放时间
 		timeArr=[];//文字介绍时间节点
 		baseTop=168
 		//(1)生成时间（总时间）
-		var totalTime = audio.duration;
+
+		var audio = new Audio('audio/moon.mp3')
 //		//(2)生成文字介绍
 		var strLrc = '';
 		for(var attr in lrc){
 			strLrc+='<li class="lrc-item" data-time="'+attr+'">'+lrc[attr]+'</li>';
 			timeArr.push(attr);
 		}
-		audio.play()
-		$('#lrc').html(strLrc);''
-//		$('.audio-control').click(function(){
-//			if($(this).hasClass('active')){
-//				$(this).removeClass('active')
-//				clearInterval(timer)
-//				audio.pause()
-//			}else{
-//				audio.load();
-//				$(this).addClass('active')
-//				audio.play()
+		$('#lrc').html(strLrc);
+		var totalTime = audio.duration;
+		audio.load();
+		$('.audio-control').click(function(){
+			if($(this).hasClass('active')){
+				$(this).removeClass('active')
+				clearInterval(timer)
+				audio.pause()
+			}else{
+				$(this).addClass('active')
+				audio.play()
 				timer = setInterval(function(){
 					num+=1;
 					if(num>=totalTime){
@@ -81,7 +82,7 @@
 						}
 					}
 				},1000)
-//			}
-//		})
+			}
+		})
 	</script>
 </html>
