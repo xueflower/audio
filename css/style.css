@@ -1,0 +1,76 @@
+.container{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.6);
+}
+.title{
+	height: 4.166666rem;
+	text-align: center;
+	font-size: 1.25rem;
+	line-height: 4.166666rem;
+	color: #fff;
+}
+/*开关按钮*/
+.false-control{
+	width: 16.666666rem;
+	height: 3.333333rem;
+	border-radius: 1.666666rem;
+	background: #fff;
+	margin: 0.833333rem auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.audio-control{
+	width: 2.5rem;
+	height: 2.5rem;
+	display: inline-block;
+	background: url('../img/pause.png');
+	background-size: 100% 100%;
+}
+.audio-control.active{
+	background: url('../img/play.png');
+	background-size: 100% 100%;
+}
+/*时间显示*/
+.time{
+	display: inline-block;
+	line-height: 3.333333rem;
+	font-size: 1.833333rem;
+	color: #333;
+	line-height: 3.333333rem;
+}
+.current-time{
+	margin-left: 0.666666rem;
+}
+#audio{
+	margin: auto;
+	display: block;
+	margin-bottom: 1.25rem;
+	width: 0;
+	height: 0;
+}
+.lrc{
+	width: 100%;
+	height: 16.666666rem;
+	overflow: hidden;
+	position: relative;
+}
+#lrc{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 7rem;
+}
+#lrc .lrc-item{
+	color:#fff;
+	width: 100#;
+	height: 1.25rem;
+	text-align: center;
+	line-height: 1.25rem;
+	margin-bottom: 0.5rem;;
+}
+#lrc .lrc-item.active{
+	background: rgba(256,256,256,0.8);
+	color: #333;
+}
