@@ -21,7 +21,7 @@
 			</div>
 			<div class="lrc">
 				<ul id="lrc">
-					<li>歌词加载中~</li>
+					<li class="lrc-item">歌词加载中~</li>
 				</ul>
 			</div>
 		</div>
@@ -30,8 +30,7 @@
 	<script src="js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/lrc.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		//歌词动态交互
-//		var audio = $('#audio')[0];
+
 		var num = -1;//时间计数
 		var timer = "";//定时器
 		var str = '';//当前播放时间
@@ -48,6 +47,7 @@
 		}
 		$('#lrc').html(strLrc);
 		audio.load();
+		//点击按钮播放暂停
 		$('.audio-control').click(function(){
 			var that = $(this);
 			if($(this).hasClass('active')){
@@ -58,8 +58,8 @@
 				$(this).addClass('active')
 				audio.play()
 				timer = setInterval(function(){
-					console.log(audio.duration)
 					num+=1;
+					console.log(audio.currentTime)//获取当前播放时间点
 					if(num>audio.duration){
 						num = -1;
 						that.removeClass('active');
@@ -80,7 +80,6 @@
 						$('.current-time').html(str)
 						for(var i=0;i<timeArr.length;i++){
 							if(timeArr[i]==str){
-								console.log(str)
 								$('.lrc-item').removeClass('active');
 								$('.lrc-item').eq(i).addClass('active');
 								baseTop-=42
