@@ -9,14 +9,16 @@
 	</head>
 	<body>
 		<div class="container">
-			<!--<audio id="audio" src="" controls loop></audio>-->
+			<div class="cover"></div>
 			<div class="false-control">
 				<em class="audio-control"></em>
 				<span class="time current-time">0:00</span>
-				<span class="time">/</span>
-				<span class="time total-time">4:53</span>
 			</div>
-			<p class="title">文物名称</p>
+
+			<div class="intro">
+				<p class="title">我是大白菜</p>
+				<img src="img/dabaicai.jpg"/>
+			</div>
 			<div class="lrc">
 				<ul id="lrc">
 					<li>歌词加载中~</li>
@@ -45,9 +47,9 @@
 			timeArr.push(attr);
 		}
 		$('#lrc').html(strLrc);
-		var totalTime = audio.duration;
 		audio.load();
 		$('.audio-control').click(function(){
+			var that = $(this);
 			if($(this).hasClass('active')){
 				$(this).removeClass('active')
 				clearInterval(timer)
@@ -56,12 +58,19 @@
 				$(this).addClass('active')
 				audio.play()
 				timer = setInterval(function(){
+					console.log(audio.duration)
 					num+=1;
-					if(num>=totalTime){
+					if(num>audio.duration){
 						num = -1;
-						$(this).removeClass('active')
-						clearInterval(timer)
-						audio.pause()
+						that.removeClass('active');
+						clearInterval(timer);
+//						audio.pause();
+						audio.load();
+						$('.current-time').html('0:00');
+						$('#lrc').css({
+									'top':7+'rem'
+								})
+						return;
 					}else{
 						if(Math.floor(num%60)>=10){
 							str= Math.floor(num/60)+":"+Math.floor(num%60)

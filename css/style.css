@@ -2,6 +2,9 @@
 	width: 100%;
 	height: 100%;
 	background: rgba(0,0,0,0.6);
+	box-sizing: border-box;
+	background: url('../img/timg.jpg');
+	background-size: 100% 100%;
 }
 .title{
 	height: 4.166666rem;
@@ -15,11 +18,12 @@
 	width: 16.666666rem;
 	height: 3.333333rem;
 	border-radius: 1.666666rem;
-	background: #fff;
-	margin: 0.833333rem auto;
+	background: rgba(255,255,255,0.2);
+	margin: 0 auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-top: 1.25rem;
 }
 .audio-control{
 	width: 2.5rem;
@@ -52,9 +56,11 @@
 }
 .lrc{
 	width: 100%;
-	height: 16.666666rem;
+	height: 17rem;
 	overflow: hidden;
 	position: relative;
+	margin-top: 1.666666rem;
+	background: linear-gradient(rgba(255,255,255,0) 0%,rgba(255,255,255,0.4) 20%,transparent 80%,rgba(255,255,255,0.4) 80%,rgba(255,255,255,0) 100%);
 }
 #lrc{
 	position: absolute;
@@ -63,7 +69,7 @@
 	top: 7rem;
 }
 #lrc .lrc-item{
-	color:#fff;
+	color:#000;
 	width: 100#;
 	height: 1.25rem;
 	text-align: center;
@@ -71,6 +77,18 @@
 	margin-bottom: 0.5rem;;
 }
 #lrc .lrc-item.active{
-	background: rgba(256,256,256,0.8);
+	background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,1),rgba(255,255,255,0.5));
 	color: #333;
+}
+.intro>img{
+	height: 16.666666rem;
+	width: auto;
+	display: block;
+	margin: 0 auto;
+}
+/*半透明遮罩*/
+.cover{
+	width: 100%;
+	height: 1.25rem;
+	background: linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,0));
 }
