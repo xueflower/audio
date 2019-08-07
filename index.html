@@ -19,6 +19,7 @@
 				<p class="title">我是大白菜</p>
 				<img src="img/dabaicai.jpg"/>
 			</div>
+			
 			<div class="lrc">
 				<ul id="lrc">
 					<li class="lrc-item">歌词加载中~</li>
@@ -31,7 +32,6 @@
 	<script src="js/lrc.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 
-		var num = -1;//时间计数
 		var timer = "";//定时器
 		var str = '';//当前播放时间
 		timeArr=[];//文字介绍时间节点
@@ -58,13 +58,9 @@
 				$(this).addClass('active')
 				audio.play()
 				timer = setInterval(function(){
-					num+=1;
-					console.log(audio.currentTime)//获取当前播放时间点
-					if(num>audio.duration){
-						num = -1;
+					if(audio.currentTime==audio.duration){
 						that.removeClass('active');
 						clearInterval(timer);
-//						audio.pause();
 						audio.load();
 						$('.current-time').html('0:00');
 						$('#lrc').css({
@@ -72,10 +68,10 @@
 								})
 						return;
 					}else{
-						if(Math.floor(num%60)>=10){
-							str= Math.floor(num/60)+":"+Math.floor(num%60)
+						if(Math.floor(audio.currentTime%60)>=10){
+							str= Math.floor(audio.currentTime/60)+":"+Math.floor(audio.currentTime%60)
 						}else{
-							str= Math.floor(num/60)+":0"+Math.floor(num%60)
+							str= Math.floor(audio.currentTime/60)+":0"+Math.floor(audio.currentTime%60)
 						};
 						$('.current-time').html(str)
 						for(var i=0;i<timeArr.length;i++){
